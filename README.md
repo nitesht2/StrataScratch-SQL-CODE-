@@ -1,1 +1,1 @@
-# StrataScratch-SQL-CODE-
+# StrataScratch-SQL-CODE-Solution
