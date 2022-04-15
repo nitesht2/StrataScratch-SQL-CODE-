@@ -1,0 +1,16 @@
+Three Purchases
+List the IDs of customers who made at least 3 orders in both 2020 and 2021.
+
+with a as
+(
+select user_id from amazon_orders 
+where EXTRACT(year from order_date)=2020 
+group by user_id
+having count(id)>=3
+),b as
+(select user_id from amazon_orders 
+where EXTRACT(year from order_date)=2021
+group by user_id
+having count(id)>=3)
+
+select a.user_id from a,b where a.user_id=b.user_id
