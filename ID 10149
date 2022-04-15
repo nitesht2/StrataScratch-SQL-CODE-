@@ -1,0 +1,12 @@
+Gender With Generous Reviews
+Write a query to find which gender gives a higher average review score when writing reviews as guests. Use the `from_type` column to identify guest reviews. Output the gender and their average review score.
+
+SELECT g.gender,
+        AVG(review_score) as avg_score
+FROM airbnb_guests g
+JOIN airbnb_reviews r
+ON r.from_user = g.guest_id
+WHERE from_type ='guest'
+GROUP BY g.gender
+ORDER BY avg_score DESC
+LIMIT 1
