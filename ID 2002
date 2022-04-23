@@ -1,0 +1,11 @@
+Write a query that returns the user ID of all users that have created at least one ‘Refinance’ submission and at least one ‘InSchool’ submission.
+Table: loans
+
+with CTE as (
+        SELECT user_id
+        FROM loans
+        WHERE type = 'Refinance')
+SELECT distinct(a.user_id)
+FROM loans a
+WHERE type ='InSchool'
+AND a.user_id IN (SELECT user_id FROM cte)
