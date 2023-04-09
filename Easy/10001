@@ -1,0 +1,38 @@
+Find the cost per customer for advertising via public transport
+
+Find the cost per customer for each advertising channel and year combination . Include only channels that are advertised via public transport (advertising channel includes "bus" substring).
+The cost per customer is equal to the total spent money divided by the total number of acquired customers through that advertising channel. Output advertising channel and its cost per customer.
+
+Table: uber_advertising
+
+| Year | Advertising Channel | Money Spent | Customers Acquired |
+| ---- | ------------------ | ----------- | ------------------ |
+| 2019 | Celebrities        | 10000000    | 1800               |
+| 2019 | Billboards         | 1000000     | 2000               |
+| 2019 | Bus Stops          | 1500        | 400                |
+| 2019 | Buses              | 70000       | 2500               |
+| 2019 | TV                 | 300000      | 5000               |
+| 2019 | Radio              | 1500        | 51                 |
+| 2018 | Celebrities        | 123555      | 2100               |
+| 2018 | Billboards         | 500000      | 1800               |
+| 2018 | Bus Stops          | 35000       | 600                |
+| 2018 | Buses              | 550000      | 2300               |
+| 2018 | TV                 | 500000      | 5300               |
+| 2018 | Radio              | 2500        | 250                |
+| 2017 | Celebrities        | 300000      | 1900               |
+| 2017 | Billboards         | 200200      | 2100               |
+| 2017 | Bus Stops          | 80000       | 800                |
+| 2017 | Buses              | 3589000     | 2700               |
+| 2017 | TV                 | 80000       | 4700               |
+| 2017 | Radio              | 80000       | 1200               |
+
+Code: 
+
+select sum(money_spent)/sum(customers_acquired) as cpc, advertising_channel, year
+from uber_advertising
+where advertising_channel like '%bus%'
+group by year, advertising_channel;
+
+
+
+
